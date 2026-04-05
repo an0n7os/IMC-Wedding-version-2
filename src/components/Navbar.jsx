@@ -37,34 +37,34 @@ const Navbar = () => {
       borderBottom: isScrolled ? '1px solid rgba(253, 251, 247, 0.05)' : 'none'
     }}>
       <div className="container-wide" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <Link to="/" className="interactive" data-cursor="explore" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
+        <Link to="/" className="interactive navbar-brand-link" data-cursor="explore" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
           <img
             src="/images/new logo png.png"
             alt="IMC WEDDINGS"
             className="navbar-logo"
             style={{
-              height: isScrolled ? 'clamp(32px, 5vw, 36px)' : 'clamp(48px, 8vw, 55px)',
+              height: isScrolled ? 'clamp(28px, 4.5vw, 32px)' : 'clamp(38px, 6.5vw, 48px)',
               width: 'auto',
               transition: 'all 0.6s var(--ease-cinematic)',
               filter: 'brightness(1.3) contrast(1.1)',
               objectFit: 'contain',
             }}
           />
-          <span style={{ 
+          <span className="navbar-logo-text" style={{ 
             marginLeft: '0.6rem', 
             color: 'var(--color-ivory)', 
             fontFamily: "'Inter', sans-serif", 
-            fontSize: isScrolled ? '0.85rem' : '1.1rem',
-            letterSpacing: '6px',
+            fontSize: isScrolled ? '0.75rem' : '0.9rem',
+            letterSpacing: '4px',
             textTransform: 'uppercase',
             transition: 'all 0.6s var(--ease-cinematic)',
             fontWeight: 400,
             whiteSpace: 'nowrap',
             display: 'flex',
             alignItems: 'center',
-            gap: '0.5rem'
+            gap: '0.4rem'
           }}>
-            IMC <span style={{ color: 'var(--color-gold)', opacity: 0.9, fontSize: '0.85em', fontWeight: 300, letterSpacing: '4px' }}>Weddings</span>
+            IMC <span className="logo-weddings-text" style={{ color: 'var(--color-gold)', opacity: 0.9, fontSize: '0.85em', fontWeight: 300, letterSpacing: '3px' }}>Weddings</span>
           </span>
         </Link>
 
