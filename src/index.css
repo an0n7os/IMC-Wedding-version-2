@@ -1060,3 +1060,128 @@ input, textarea {
     flex: 1 1 auto !important;
   }
 }
+
+/* ═══════════════════════════════════════════════════════════════
+   MOBILE RESPONSIVE UTILITIES & BREAKPOINTS
+   ═══════════════════════════════════════════════════════════════ */
+
+/* Mobile display toggles */
+.d-show-mobile {
+  display: none !important;
+}
+
+@media (max-width: 991px) {
+  .d-none-mobile {
+    display: none !important;
+  }
+  
+  .d-show-mobile {
+    display: block !important;
+  }
+
+  /* Global Container Adjustments */
+  .container-wide {
+    padding-left: 5vw !important;
+    padding-right: 5vw !important;
+  }
+
+  /* Footer Mobile Grid Fixes */
+  .global-footer [style*="grid-template-columns"],
+  .global-footer [style*="gridTemplateColumns"] {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 3rem !important;
+  }
+
+  .global-footer [style*="gridColumn"],
+  .global-footer [style*="grid-column"] {
+    grid-column: span 12 / span 12 !important;
+    width: 100% !important;
+    padding-right: 0 !important;
+  }
+
+  .global-footer [style*="justify-content: flex-end"],
+  .global-footer [style*="justifyContent: flex-end"],
+  .global-footer [style*="justifyContent: 'flex-end'"] {
+    justify-content: flex-start !important;
+    flex-direction: column !important;
+    gap: 3rem !important;
+  }
+
+  .footer-bottom-bar {
+    flex-direction: column !important;
+    gap: 1.5rem !important;
+    text-align: center !important;
+  }
+
+  /* About Page Manifesto Grid Mobile Stacking */
+  .manifesto-section [style*="grid-template-columns"],
+  .manifesto-section [style*="gridTemplateColumns"] {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 3rem !important;
+  }
+
+  .manifesto-section [style*="gridColumn"],
+  .manifesto-section [style*="grid-column"] {
+    grid-column: 1 / -1 !important;
+    width: 100% !important;
+    padding-right: 0 !important;
+    height: auto !important;
+  }
+
+  .founders-montage {
+    grid-template-columns: 1fr !important;
+    height: auto !important;
+  }
+}
+
+@media (max-width: 768px) {
+  /* General Typography Scaling for Mobile */
+  h1 {
+    font-size: clamp(2.5rem, 10vw, 4.5rem) !important;
+  }
+
+  h2 {
+    font-size: clamp(2rem, 8vw, 3.5rem) !important;
+  }
+
+  /* Story Cards on Mobile */
+  .story-card {
+    width: 85vw !important;
+    min-width: 280px !important;
+    height: 50vh !important;
+  }
+
+  .stories-container {
+    padding: 12vh 4vw 6vh 4vw !important;
+    gap: 1.5rem !important;
+  }
+
+  /* Magazine Cards on Mobile */
+  .magazine-card {
+    flex: 0 0 80vw !important;
+    min-width: 280px !important;
+    height: 380px !important;
+  }
+
+  /* Mobile Navbar Adjustments */
+  .navbar-logo-text {
+    font-size: 0.7rem !important;
+    letter-spacing: 2px !important;
+  }
+
+  .logo-weddings-text {
+    display: none !important;
+  }
+
+  /* Mobile Menu Link Sizes */
+  .mobile-menu a {
+    font-size: 2.2rem !important;
+  }
+
+  /* Section Spacing on Mobile */
+  .section {
+    padding: 5rem 0 !important;
+  }
+}
