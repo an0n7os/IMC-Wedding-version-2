@@ -30,16 +30,18 @@ import NotFound from './pages/NotFound';
 function AppContent() {
   const [loading, setLoading] = useState(true);
   const [reelOpen, setReelOpen] = useState(false);
-  const [scrollProgress, setScrollProgress] = useState(0);
   const location = useLocation();
   const lenisRef = useRef();
+  const progressBarRef = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.scrollY || document.documentElement.scrollTop;
       const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
       const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-      setScrollProgress(progress);
+      if (progressBarRef.current) {
+        progressBarRef.current.style.width = `${progress}%`;
+      }
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
@@ -54,11 +56,10 @@ function AppContent() {
   useEffect(() => {
     // 1. Initialize Lenis Smooth Scroll
     const lenis = new Lenis({
-      duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      lerp: 0.10,
       smoothWheel: true,
       wheelMultiplier: 1.1,
-      lerp: 0.1
+      smoothTouch: false,
     });
 
     lenisRef.current = lenis;
@@ -113,11 +114,11 @@ function AppContent() {
       <AudioToggle />
       
       {/* Gold Scroll Progress Bar */}
-      <div style={{
+      <div ref={progressBarRef} style={{
         position: 'fixed',
         top: 0,
         left: 0,
-        width: `${scrollProgress}%`,
+        width: '0%',
         height: '2px',
         background: 'linear-gradient(90deg, var(--color-gold), #fff8dc)',
         zIndex: 99998,
@@ -126,9 +127,6 @@ function AppContent() {
         pointerEvents: 'none',
         boxShadow: '0 0 8px rgba(201, 168, 76, 0.6)',
       }} />
-
-      {/* Cinematic Grain Overlay */}
-      <div className="global-grain"></div>
 
       {/* Cinematic Showreel Modal */}
       <ReelModal

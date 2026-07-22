@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowUpRight } from 'phosphor-react';
 
@@ -103,11 +103,8 @@ const Footer = () => {
             © {new Date().getFullYear()} / ARCHIVING LEGACIES GLOBALLY / MADE BY <a href="https://brandliftonline.in/" target="_blank" rel="noopener noreferrer" className="interactive" style={{ color: 'var(--color-gold)', textDecoration: 'none', transition: 'opacity 0.3s' }} data-cursor="explore">BRANDLIFT ONLINE</a>
           </span>
         </div>
-        
-        <div style={{ display: 'flex', gap: '3rem' }}>
-          <span className="interactive footer-link-modern" data-cursor="view" style={{ fontSize: '0.6rem', opacity: 0.5 }}>Legal Notice</span>
-          <span className="interactive footer-link-modern" data-cursor="view" style={{ fontSize: '0.6rem', opacity: 0.5 }}>Private Domain</span>
-        </div>
+
+
       </div>
       
     </footer>

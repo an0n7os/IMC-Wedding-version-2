@@ -9,8 +9,6 @@ gsap.registerPlugin(ScrollTrigger);
 
 import { portfolioData, reelsData, stillsData } from '../data/portfolio';
 
-gsap.registerPlugin(ScrollTrigger);
-
 
 const Films = () => {
     const containerRef = useRef(null);
@@ -41,11 +39,12 @@ const Films = () => {
             gsap.to(img, {
                 yPercent: 10,
                 ease: 'none',
+                force3D: true,
                 scrollTrigger: {
                     trigger: img.parentElement,
                     start: 'top bottom',
                     end: 'bottom top',
-                    scrub: true
+                    scrub: 1
                 }
             });
         });
@@ -59,7 +58,7 @@ const Films = () => {
                     <video 
                         src="https://joy1.videvo.net/videvo_files/video/free/2021-04/large_watermarked/210329_02_Full%20Open%20Wedding_4k_019_preview.mp4" 
                         autoPlay loop muted playsInline 
-                        style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.4 }}
+                        style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.4, willChange: 'transform', transform: 'translateZ(0)' }}
                     />
                     <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, var(--color-bg) 0%, transparent 50%, rgba(0,0,0,0.4) 100%)' }}></div>
                 </div>
@@ -89,7 +88,6 @@ const Films = () => {
                         // Dynamic Layout logic
                         let alignSelf = 'flex-start';
                         let width = '70%';
-                        let marginSide = '0';
                         
                         if (!isEven) { 
                             alignSelf = 'flex-end'; 
@@ -164,7 +162,7 @@ const Films = () => {
 
                                     {/* Inner Film Graphics */}
                                     <div style={{ position: 'absolute', top: '2.5rem', left: '2.5rem', color: 'var(--color-gold)', fontSize: '0.6rem', letterSpacing: '4px', zIndex: 10, opacity: 0.7 }}>
-                                       FRAME_{index + 200} // NARRATIVE.STREAM
+                                       {film.year || new Date().getFullYear()} // {film.category?.toUpperCase() || 'CINEMATIC'}
                                     </div>
 
                                     <div className="film-hover-overlay" style={{ 

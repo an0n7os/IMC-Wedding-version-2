@@ -28,7 +28,6 @@ const Home = () => {
   const [activeFaq, setActiveFaq] = useState(null);
   const [activeTestimonial, setActiveTestimonial] = useState(0);
   const [activeHeroSlide, setActiveHeroSlide] = useState(0);
-  const [scrollProgress, setScrollProgress] = useState(0);
 
   const heroSlides = [
     '/images/DSC00018.jpeg',
@@ -54,32 +53,21 @@ const Home = () => {
     return () => clearInterval(interval);
   }, [heroSlides.length]);
 
+  // Refresh ScrollTrigger after a short delay to account for dynamic content loading
   useEffect(() => {
-    const handleScroll = () => {
-      const total = document.documentElement.scrollHeight - window.innerHeight;
-      const progress = (window.scrollY / total) * 100;
-      setScrollProgress(progress);
-    };
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-
-
-  useEffect(() => {
-    const handleMouseMove = (e) => setMousePos({ x: e.clientX, y: e.clientY });
-    window.addEventListener('mousemove', handleMouseMove);
-    
-    // Refresh ScrollTrigger after a short delay to account for dynamic content loading
     const timer = setTimeout(() => {
       ScrollTrigger.refresh();
     }, 1000);
-
-    return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-      clearTimeout(timer);
-    };
+    return () => clearTimeout(timer);
   }, []);
+
+  // Track mouse position ONLY when hovering over a featured story card
+  useEffect(() => {
+    if (!hoveredProject) return;
+    const handleMouseMove = (e) => setMousePos({ x: e.clientX, y: e.clientY });
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, [hoveredProject]);
 
   useGSAP(() => {
     // Hero Text Parallax & Fade
@@ -128,11 +116,12 @@ const Home = () => {
       gsap.to(img, {
         yPercent: 20,
         ease: 'none',
+        force3D: true,
         scrollTrigger: {
           trigger: img.parentElement,
           start: 'top bottom',
           end: 'bottom top',
-          scrub: true
+          scrub: 1
         }
       });
     });
@@ -233,19 +222,7 @@ const Home = () => {
   return (
     <div ref={containerRef} style={{ background: 'var(--color-bg)' }}>
       
-      {/* Gold Scroll Progress Bar */}
-      <div style={{
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        width: `${scrollProgress}%`,
-        height: '2px',
-        background: 'linear-gradient(90deg, var(--color-gold), #f0d060)',
-        zIndex: 99999,
-        pointerEvents: 'none',
-        transition: 'width 0.1s linear',
-        boxShadow: '0 0 8px rgba(212,175,55,0.6)',
-      }} />
+
 
       {/* 0. Floating Project Peek (Follows Mouse) */}
       <AnimatePresence>
@@ -282,7 +259,7 @@ const Home = () => {
       <section className="hero-section" style={{ height: '100vh', position: 'relative', overflow: 'hidden', background: 'var(--color-bg)' }} data-cursor="play">
         
         {/* Cinematic Image Slideshow Background */}
-        <div ref={videoWrapRef} style={{ width: '100%', height: '100%', position: 'absolute', top: 0, left: 0, clipPath: 'circle(100% at 50% 50%)' }}>
+        <div ref={videoWrapRef} style={{ width: '100%', height: '100%', position: 'absolute', top: 0, left: 0, clipPath: 'circle(100% at 50% 50%)', willChange: 'clip-path' }}>
           {heroSlides.map((slide, i) => (
             <div
               key={i}
@@ -406,7 +383,7 @@ const Home = () => {
                 <p style={{ fontSize: '1.3rem', fontFamily: 'var(--font-heading)', color: 'var(--color-gold)', fontStyle: 'italic', marginBottom: '1rem', letterSpacing: '0.05em' }}>
                   At IMC Weddings, we’re more than just visual artists;
                 </p>
-                <p style={{ fontSize: '1.05rem', color: 'var(--color-text-muted)', lineHeight: 2, maxWidth: '480px', fontWeight: 300 }}>
+                <p style={{ fontSize: '1.05rem', color: 'rgba(17, 17, 17, 0.7)', lineHeight: 2, maxWidth: '480px', fontWeight: 300 }}>
                   We’re passionate dream weavers committed to transforming your love story into an unforgettable cinematic memory. With our artist’s eye and storyteller’s heart, we craft mesmerizing frames that capture every emotion of your special day.
                   <br /><br />
                   From the quiet glances to the grand gestures, we specialize in uncovering the extraordinary beauty hidden within each moment. Together, we’ll embark on a journey filled with laughter, tears, and endless joy, ensuring your memories are preserved as timeless treasures to cherish forever.
@@ -577,15 +554,15 @@ const Home = () => {
             >
               <div style={{ overflow: 'hidden', width: '100%', height: '100%' }}>
                 <img 
-                  className="img-parallax" 
                   src={story.img} 
                   alt={story.title} 
                   loading="lazy" 
                   decoding="async" 
                   style={{ 
-                    width: '100%', height: '130%', objectFit: 'cover', top: '-15%', position: 'absolute', 
+                    width: '100%', height: '100%', objectFit: 'cover', position: 'absolute', 
                     willChange: 'transform',
-                    transform: 'translateZ(0)'
+                    transform: hoveredProject?.id === story.id ? 'scale(1.05) translateZ(0)' : 'scale(1.0) translateZ(0)',
+                    transition: 'transform 0.8s var(--ease-cinematic)'
                   }} 
                 />
               </div>
@@ -742,7 +719,7 @@ const Home = () => {
           <div style={{ textAlign: 'center', marginBottom: '6rem' }}>
              <div className="red-dot"></div>
              <span className="subtitle-mono" style={{ fontSize: '0.65rem', textTransform: 'uppercase', letterSpacing: '6px', color: 'var(--color-gold)', display: 'block', marginBottom: '1.5rem' }}>Knowledge Index</span>
-             <h2 style={{ fontSize: 'clamp(3rem, 6vw, 5rem)', fontFamily: 'var(--font-heading)' }}>
+             <h2 style={{ fontSize: 'clamp(3rem, 6vw, 5rem)', fontFamily: 'var(--font-heading)', color: 'var(--color-bg)' }}>
                Sovereign Guide<span style={{ color: 'var(--color-gold)' }}>.</span>
              </h2>
           </div>

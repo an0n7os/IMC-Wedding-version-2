@@ -16,10 +16,10 @@ async function optimizeImages() {
     const filePath = path.join(inputDir, file);
     const stats = fs.statSync(filePath);
     
-    // Only process images > 1MB
+    // Only process images > 150KB
     if (stats.isFile() && (file.endsWith('.jpg') || file.endsWith('.jpeg') || file.endsWith('.JPG') || file.endsWith('.PNG') || file.endsWith('.png'))) {
-      if (stats.size > 1024 * 1024) {
-        console.log(`Optimizing ${file} (${(stats.size / 1024 / 1024).toFixed(2)} MB)`);
+      if (stats.size > 150 * 1024) {
+        console.log(`Optimizing ${file} (${(stats.size / 1024).toFixed(2)} KB)`);
         
         const backupPath = path.join(backupDir, file);
         
@@ -33,15 +33,15 @@ async function optimizeImages() {
         try {
           let pipeline = sharp(backupPath)
             .resize({
-              width: 2000,
+              width: 1600,
               withoutEnlargement: true,
               fit: 'inside'
             });
 
           if (file.toLowerCase().endsWith('.png')) {
-            await pipeline.png({ quality: 80, compressionLevel: 9 }).toFile(tempPath);
+            await pipeline.png({ quality: 75, compressionLevel: 9 }).toFile(tempPath);
           } else {
-            await pipeline.jpeg({ quality: 75, progressive: true, mozjpeg: true }).toFile(tempPath);
+            await pipeline.jpeg({ quality: 70, progressive: true, mozjpeg: true }).toFile(tempPath);
           }
           
           // Replace original with compressed
@@ -49,12 +49,12 @@ async function optimizeImages() {
           fs.renameSync(tempPath, filePath);
           
           const newStats = fs.statSync(filePath);
-          console.log(`  Done: ${(newStats.size / 1024 / 1024).toFixed(2)} MB`);
+          console.log(`  Done: ${(newStats.size / 1024).toFixed(2)} KB`);
         } catch (err) {
           console.error(`Error processing ${file}:`, err);
         }
       } else {
-        console.log(`Skipping ${file} (Size already < 1MB)`);
+        console.log(`Skipping ${file} (Size already < 150KB)`);
       }
     }
   }

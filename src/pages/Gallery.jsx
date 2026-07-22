@@ -41,11 +41,12 @@ const Gallery = () => {
             gsap.to(img, {
                 yPercent: 15,
                 ease: 'none',
+                force3D: true,
                 scrollTrigger: {
                     trigger: img.parentElement,
                     start: 'top bottom',
                     end: 'bottom top',
-                    scrub: true
+                    scrub: 1
                 }
             });
         });

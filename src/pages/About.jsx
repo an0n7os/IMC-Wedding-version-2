@@ -80,11 +80,12 @@ const About = () => {
       gsap.to(img, {
         yPercent: 20,
         ease: 'none',
+        force3D: true,
         scrollTrigger: {
           trigger: img.parentElement,
           start: 'top bottom',
           end: 'bottom top',
-          scrub: true
+          scrub: 1
         }
       });
     });
@@ -193,10 +194,8 @@ const About = () => {
                   <div className="parallax-box" style={{ height: '50vh', overflow: 'hidden', borderRadius: '2px', marginBottom: '1rem' }}>
                     <img className="img-parallax" src="/images/DSC09671.jpeg" alt="" style={{ width: '100%', height: '130%', objectFit: 'cover' }} />
                   </div>
-                  <div className="parallax-box" style={{ height: '35vh', overflow: 'hidden', borderRadius: '2px', background: 'var(--color-bg)' }}>
-                     <video autoPlay loop muted playsInline style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.6 }}>
-                        <source src="https://assets.mixkit.co/videos/preview/mixkit-cinematic-portrait-of-a-beautiful-bride-4416-large.mp4" type="video/mp4" />
-                     </video>
+                  <div className="parallax-box" style={{ height: '35vh', overflow: 'hidden', borderRadius: '2px' }}>
+                     <img className="img-parallax" src="/images/DSC08078.jpeg" alt="" style={{ width: '100%', height: '130%', objectFit: 'cover' }} />
                   </div>
                 </div>
                 <div>

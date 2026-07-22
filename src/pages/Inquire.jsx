@@ -8,16 +8,20 @@ const Inquire = () => {
     const [isSubmitted, setIsSubmitted] = useState(false);
     const [isProcessing, setIsProcessing] = useState(false);
     const [formData, setFormData] = useState({ names: '', date: '', location: '', vision: '' });
-    const [formProgress, setFormProgress] = useState(0);
     const containerRef = useRef(null);
     const flareRef = useRef(null);
 
-    // Calculate progress based on filled fields
+    // Scroll to top when form is submitted successfully
     useEffect(() => {
-        const fields = Object.values(formData);
-        const filled = fields.filter(val => val.length > 2).length;
-        setFormProgress((filled / fields.length) * 100);
-    }, [formData]);
+        if (isSubmitted) {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    }, [isSubmitted]);
+
+    // Calculate progress based on filled fields
+    const fields = Object.values(formData);
+    const filled = fields.filter(val => val.length > 2).length;
+    const formProgress = (filled / fields.length) * 100;
 
     useGSAP(() => {
         // Shutter Reveal Effect
@@ -110,7 +114,7 @@ const Inquire = () => {
                                 exit={{ opacity: 0, x: -30 }}
                                 transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
                             >
-                                <form onSubmit={handleSubmit} style={{ fontSize: 'clamp(1.2rem, 2.5vw, 2.2rem)', lineHeight: 2.2, fontFamily: 'var(--font-serif-elegant)', color: 'rgba(252, 250, 248, 0.9)', textAlign: 'left' }}>
+                                <form onSubmit={handleSubmit} data-lenis-prevent style={{ fontSize: 'clamp(1.2rem, 2.5vw, 2.2rem)', lineHeight: 2.2, fontFamily: 'var(--font-serif-elegant)', color: 'rgba(252, 250, 248, 0.9)', textAlign: 'left' }}>
                                     Dear IMC, our names are{" "}
                                     <input 
                                         className="inquire-input editorial-input"

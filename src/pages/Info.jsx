@@ -14,8 +14,6 @@ gsap.registerPlugin(ScrollTrigger);
 const Info = () => {
     const containerRef = useRef(null);
     const [activeFaq, setActiveFaq] = useState(null);
-    const [isSubmitted, setIsSubmitted] = useState(false);
-    const [formData, setFormData] = useState({ names: '', date: '', location: '', vision: '' });
 
     useGSAP(() => {
         const headings = gsap.utils.toArray('.reveal-liquid');

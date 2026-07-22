@@ -9,14 +9,12 @@ const CustomCursor = () => {
   const [cursorState, setCursorState] = useState('');
   const [cursorText, setCursorText] = useState('');
   const cursorRef = useRef(null);
-  const [isVisible, setIsVisible] = useState(true);
+  const [isVisible] = useState(() => 
+    typeof window !== 'undefined' ? !window.matchMedia('(pointer: coarse)').matches : true
+  );
 
   useEffect(() => {
-    // Hide custom cursor on touch devices
-    if (window.matchMedia('(pointer: coarse)').matches) {
-      setIsVisible(false);
-      return;
-    }
+    if (!isVisible) return;
 
     const cursor = cursorRef.current;
     if (!cursor) return;
@@ -67,16 +65,26 @@ const CustomCursor = () => {
           name = name.substring(0, 15) + '...';
         }
 
-        if (cursorTarget) {
+      if (cursorTarget) {
           const type = cursorTarget.getAttribute('data-cursor');
           setCursorState(`state-${type}`);
           
-          let staticText = '';
-          if (type === 'explore') staticText = 'Explore';
-          if (type === 'view') staticText = 'View';
-          if (type === 'play') staticText = 'Play';
+          // Try to get a meaningful label from the element
+          let label = cursorTarget.getAttribute('aria-label') || cursorTarget.getAttribute('title') || cursorTarget.getAttribute('alt') || '';
+          if (!label && cursorTarget.innerText) {
+            const lines = cursorTarget.innerText.split('\n').map(s => s.trim()).filter(s => s.length > 0 && s.length < 30);
+            if (lines.length > 0) label = lines[0];
+          }
+          // Trim long labels
+          if (label && label.length > 12) label = label.substring(0, 12) + '…';
           
-          setCursorText(staticText || name || '');
+          // Fallback to type
+          let fallback = '';
+          if (type === 'explore') fallback = 'Explore';
+          if (type === 'view') fallback = 'View';
+          if (type === 'play') fallback = 'Play';
+          
+          setCursorText(label || fallback);
         } else {
           setCursorState('state-nav-hover');
           setCursorText('');
@@ -95,7 +103,7 @@ const CustomCursor = () => {
       window.removeEventListener('mousemove', moveCursor);
       window.removeEventListener('mouseover', handleMouseOver);
     };
-  }, []);
+  }, [isVisible]);
 
   return (
     <div ref={cursorRef} className={`custom-cursor ${cursorState}`} style={{ display: isVisible ? 'flex' : 'none' }}>
