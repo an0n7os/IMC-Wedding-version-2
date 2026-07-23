@@ -1100,18 +1100,190 @@ input, textarea {
     padding-right: 0 !important;
   }
 
-  .global-footer [style*="justify-content: flex-end"],
-  .global-footer [style*="justifyContent: flex-end"],
-  .global-footer [style*="justifyContent: 'flex-end'"] {
+  .footer-ateliers-wrap {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 2rem !important;
+    width: 100% !important;
+  }
+
+  .footer-directory-wrap {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
     justify-content: flex-start !important;
-    flex-direction: column !important;
-    gap: 3rem !important;
+    gap: 2rem !important;
+    width: 100% !important;
   }
 
   .footer-bottom-bar {
     flex-direction: column !important;
     gap: 1.5rem !important;
     text-align: center !important;
+  }
+
+  /* Stories Archive & Magazine Albums Mobile Stack */
+  .stories-wrap {
+    padding-top: 5rem !important;
+    height: auto !important;
+    min-height: auto !important;
+    overflow: visible !important;
+  }
+
+  .stories-wrap .stories-header-wrap {
+    position: relative !important;
+    top: 0 !important;
+    padding-top: 5rem !important;
+    padding-bottom: 1.5rem !important;
+    margin-bottom: 1rem !important;
+  }
+
+  .stories-wrap h2 {
+    font-size: clamp(2rem, 8vw, 3.5rem) !important;
+  }
+
+  .stories-container {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    max-width: 100vw !important;
+    padding: 1rem 5vw 4rem 5vw !important;
+    gap: 3rem !important;
+    position: relative !important;
+    transform: none !important;
+  }
+
+  .story-card {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    height: 380px !important;
+    margin-bottom: 3.5rem !important;
+    display: block !important;
+    position: relative !important;
+  }
+
+  .story-card > div:first-child {
+    width: 100% !important;
+    height: 100% !important;
+    position: relative !important;
+    overflow: hidden !important;
+    border-radius: 2px !important;
+  }
+
+  .story-card img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    position: relative !important;
+    top: 0 !important;
+    transform: none !important;
+  }
+
+  .story-card-info {
+    position: relative !important;
+    bottom: auto !important;
+    left: auto !important;
+    width: 100% !important;
+    padding: 0.6rem 0 !important;
+    background: transparent !important;
+    margin-top: 0.5rem !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 0.3rem !important;
+    box-sizing: border-box !important;
+  }
+
+  .story-card-info span {
+    white-space: normal !important;
+    word-break: break-word !important;
+    max-width: 100% !important;
+  }
+
+  .magazine-ribbon {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 2rem !important;
+    padding: 0 5vw !important;
+  }
+
+  .magazine-card {
+    width: 100% !important;
+    min-width: 0 !important;
+    flex: 1 1 auto !important;
+    height: 350px !important;
+  }
+
+  /* Services Grid Mobile Stack */
+  .services-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 2rem !important;
+    padding: 2rem 5vw !important;
+  }
+
+  .service-card {
+    grid-column: span 12 !important;
+    width: 100% !important;
+    height: 400px !important;
+  }
+
+  /* Global Presence Section Mobile Grid Fix */
+  #presence [style*="grid-template-columns"],
+  #presence [style*="gridTemplateColumns"] {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 3rem !important;
+  }
+
+  #presence [style*="gridColumn"],
+  #presence [style*="grid-column"] {
+    grid-column: 1 / -1 !important;
+    width: 100% !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  #presence .studio-card {
+    margin-top: 0 !important;
+    padding: 2.5rem 1.8rem !important;
+    width: 100% !important;
+  }
+
+  /* Inquire Page Form Mobile Full Width Fix */
+  .inquire-form-pane {
+    width: 100% !important;
+    margin-left: 0 !important;
+    padding: 6rem 5vw 4rem 5vw !important;
+  }
+
+  /* Testimonial Section Mobile Grid Stacking */
+  .testimonials-section [style*="grid-template-columns"],
+  .testimonials-section [style*="gridTemplateColumns"] {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 3rem !important;
+  }
+
+  .testimonials-section [style*="gridColumn"],
+  .testimonials-section [style*="grid-column"] {
+    grid-column: 1 / -1 !important;
+    width: 100% !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  .testimonials-section [style*="height: 70vh"],
+  .testimonials-section [style*="height: '70vh'"] {
+    height: 320px !important;
+    width: 100% !important;
+  }
+  .testimonial-section [style*="gridColumn"],
+  .testimonial-section [style*="grid-column"] {
+    grid-column: 1 / -1 !important;
+    width: 100% !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
   }
 
   /* About Page Manifesto Grid Mobile Stacking */
@@ -1167,12 +1339,14 @@ input, textarea {
 
   /* Mobile Navbar Adjustments */
   .navbar-logo-text {
-    font-size: 0.7rem !important;
+    font-size: 0.68rem !important;
     letter-spacing: 2px !important;
   }
 
   .logo-weddings-text {
-    display: none !important;
+    display: inline-block !important;
+    font-size: 0.85em !important;
+    letter-spacing: 2px !important;
   }
 
   /* Mobile Menu Link Sizes */
@@ -1207,6 +1381,10 @@ input, textarea {
   }
 
   .studio-card {
+    padding: 2.5rem 1.5rem !important;
+    margin-top: 0 !important;
+  }
+
   .about-text-col, .about-image-col {
     grid-column: 1 / -1 !important;
     width: 100% !important;
@@ -1245,13 +1423,37 @@ input, textarea {
 
   /* Word break protection for titles on small screens */
   h1, h2, h3, .hero-title, .svc-title {
-    overflow-wrap: break-word !important;
-    word-wrap: break-word !important;
+    word-break: normal !important;
+    overflow-wrap: normal !important;
+    white-space: normal !important;
+  }
+
+  /* Testimonial Quote Mobile Display Fix */
+  .testimonial-section [style*="gridColumn"],
+  .testimonial-section [style*="grid-column"] {
+    grid-column: 1 / -1 !important;
+    width: 100% !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  .testimonial-section h3 {
+    font-size: clamp(1.1rem, 4.5vw, 1.6rem) !important;
+    line-height: 1.6 !important;
+    white-space: normal !important;
+  }
+
+  .testimonial-section h3 span {
+    display: inline !important;
+    margin-right: 0.25em !important;
+    white-space: normal !important;
   }
 
   /* SplitText inline display fix on mobile */
   .reveal-liquid {
     white-space: normal !important;
+    word-break: normal !important;
+    overflow-wrap: normal !important;
   }
 
   .archive-seal {
@@ -1320,4 +1522,33 @@ input, textarea {
     height: 36px;
   }
 }
+
+/* ═══════════════════════════════════════════════════════════════
+   GPU HARDWARE ACCELERATION & ZERO-LAG SCROLL PERFORMANCE
+   ═══════════════════════════════════════════════════════════════ */
+*, *::before, *::after {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Hardware Accelerated Compositor Layers */
+.img-parallax, 
+.story-card img, 
+.magazine-card img, 
+.service-card img, 
+.film-row img,
+.char-liquid,
+.reveal-liquid {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Content visibility offscreen optimizations */
+.section, .stories-wrap, .testimonials-section, .global-footer {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 800px;
+}
+
 

@@ -10,7 +10,6 @@ import { useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import CustomCursor from './components/CustomCursor';
 import ScrollToTop from './components/ScrollToTop';
-import AudioToggle from './components/AudioToggle';
 import Preloader from './components/Preloader';
 import ReelModal from './components/ReelModal';
 import Footer from './components/Footer';
@@ -56,22 +55,20 @@ function AppContent() {
   useEffect(() => {
     // 1. Initialize Lenis Smooth Scroll
     const lenis = new Lenis({
-      lerp: 0.10,
+      lerp: 0.12,
       smoothWheel: true,
-      wheelMultiplier: 1.1,
+      wheelMultiplier: 1.2,
       smoothTouch: false,
     });
 
     lenisRef.current = lenis;
-
-    // Native RAF loop removed to prevent double-tick jitter. Relying entirely on gsap.ticker below.
 
     // 2. Connect Lenis to ScrollTrigger
     lenis.on('scroll', ScrollTrigger.update);
     gsap.ticker.add((time) => {
         lenis.raf(time * 1000);
     });
-    gsap.ticker.lagSmoothing(0);
+    gsap.ticker.lagSmoothing(500, 33);
 
     // 3. Global Anchor Smooth Scroll Interceptor
     const handleAnchorClicks = (e) => {
@@ -111,7 +108,6 @@ function AppContent() {
 
       <CustomCursor />
       <Navbar />
-      <AudioToggle />
       
       {/* Gold Scroll Progress Bar */}
       <div ref={progressBarRef} style={{

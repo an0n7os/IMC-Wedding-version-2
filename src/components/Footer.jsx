@@ -3,10 +3,6 @@ import { Link } from 'react-router-dom';
 import { ArrowUpRight } from 'phosphor-react';
 
 const Footer = () => {
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
   return (
     <footer className="global-footer" style={{ background: 'var(--color-bg)', color: 'var(--color-ivory)', borderTop: '1px solid rgba(253, 251, 247, 0.05)', position: 'relative', zIndex: 5, overflow: 'hidden' }}>
       
@@ -23,27 +19,13 @@ const Footer = () => {
            </Link>
         </div>
 
-        {/* Return to Origin (Magnetic Top Button) */}
-        <div 
-          onClick={scrollToTop}
-          className="interactive magnetic-btn" 
-          data-cursor="view"
-          style={{ 
-            width: '120px', height: '120px', borderRadius: '50%', border: '1px solid rgba(212, 175, 55, 0.3)', 
-            display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', cursor: 'pointer',
-            transition: 'all 0.6s var(--ease-cinematic)'
-          }}
-        >
-           <span style={{ fontSize: '0.5rem', color: 'var(--color-gold)', letterSpacing: '3px', textTransform: 'uppercase', marginBottom: '0.8rem' }}>Origin</span>
-           <div style={{ fontSize: '1.5rem', color: 'var(--color-ivory)', transform: 'rotate(-45deg)' }}>&rarr;</div>
-        </div>
       </div>
 
       {/* 2. STRATEGIC ATELIERS & DIRECTORY */}
       <div style={{ padding: '8vh 5vw', display: 'grid', gridTemplateColumns: 'repeat(12, 1fr)', gap: '4rem' }}>
         
         {/* Ateliers Column */}
-        <div style={{ gridColumn: '1 / 6', display: 'flex', gap: '4rem' }}>
+        <div className="footer-ateliers-wrap" style={{ gridColumn: '1 / 6', display: 'flex', gap: '4rem' }}>
            <div>
              <span style={{ fontSize: '0.6rem', textTransform: 'uppercase', letterSpacing: '4px', color: 'var(--color-gold)', display: 'block', marginBottom: '1.5rem' }}>// Atelier I (Creative Vault)</span>
              <h4 style={{ fontSize: '0.9rem', marginBottom: '1rem', color: 'var(--color-ivory)' }}>Manjeri, India</h4>
@@ -63,7 +45,7 @@ const Footer = () => {
         </div>
 
         {/* Directory Column */}
-        <div style={{ gridColumn: '7 / 13', display: 'flex', justifyContent: 'flex-end', gap: '6rem' }}>
+        <div className="footer-directory-wrap" style={{ gridColumn: '7 / 13', display: 'flex', justifyContent: 'flex-end', gap: '6rem' }}>
            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.2rem' }}>
               <span style={{ fontSize: '0.6rem', textTransform: 'uppercase', letterSpacing: '4px', color: 'var(--color-gold)', display: 'block', marginBottom: '1rem', opacity: 0.8 }}>Archives</span>
               <Link to="/gallery" className="interactive footer-link-modern" data-cursor="nav-hover">Photography</Link>

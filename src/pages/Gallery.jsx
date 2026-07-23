@@ -246,13 +246,13 @@ const Gallery = () => {
             </section>
 
             {/* Wedding Films (Cinema Archive) */}
-            <section ref={storiesWrapRef} id="wedding-films" className="section" style={{ background: 'var(--color-bg)', padding: 0, overflow: 'hidden', position: 'relative' }}>
+            <section ref={storiesWrapRef} id="wedding-films" className="section stories-wrap" style={{ background: 'var(--color-bg)', padding: 0, overflow: 'hidden', position: 'relative' }}>
                 <div className="red-dot" style={{ position: 'absolute', top: '2rem', left: '50%', transform: 'translateX(-50%)', zIndex: 10 }}></div>
-                <div className="container-wide" style={{ position: 'absolute', top: '4rem', left: '0', right: '0', textAlign: 'center', zIndex: 10 }}>
+                <div className="container-wide stories-header-wrap" style={{ position: 'relative', paddingTop: '7rem', paddingBottom: '2rem', textAlign: 'center', zIndex: 10 }}>
                    <h2 style={{ fontSize: 'clamp(2rem, 6vw, 5rem)' }}><SplitText className="reveal-liquid">Stories Archive</SplitText></h2>
                    <span className="subtitle-mono" style={{ fontSize: '0.6rem', color: 'var(--color-gold)', marginTop: '0.5rem', display: 'block', textTransform: 'uppercase', letterSpacing: '4px' }}>Wedding Stories</span>
                 </div>
-                <div ref={storiesContainerRef} className="stories-container" style={{ display: 'flex', gap: '3rem', padding: '25vh 5vw 10vh 5vw', width: 'fit-content', willChange: 'transform' }}>
+                <div ref={storiesContainerRef} className="stories-container" style={{ display: 'flex', gap: '3rem', padding: '2rem 5vw 6rem 5vw', width: 'fit-content', willChange: 'transform' }}>
                   {stories.map(story => (
                     <Link 
                       to={`/gallery/${story.slug}`}
@@ -264,9 +264,25 @@ const Gallery = () => {
                       <div style={{ overflow: 'hidden', width: '100%', height: '100%' }}>
                         <img className="img-parallax" src={story.img} alt={story.title} loading="lazy" decoding="async" style={{ width: '100%', height: '130%', objectFit: 'cover', top: '-15%', position: 'absolute' }} />
                       </div>
-                      <div style={{ position: 'absolute', bottom: '-4rem', left: 0, width: '100%', display: 'flex', justifyContent: 'space-between', fontFamily: 'var(--font-body)', textTransform: 'uppercase', fontSize: '0.7rem', letterSpacing: '2px', color: 'var(--color-taupe)', padding: '0 1rem', transform: 'none' }}>
-                        <span style={{ color: 'var(--color-ivory)' }}>{story.title}</span>
-                        <span>{story.location} &mdash; {story.mood}</span>
+                      <div className="story-card-info" style={{ 
+                        position: 'absolute', 
+                        bottom: 0, 
+                        left: 0, 
+                        width: '100%', 
+                        display: 'flex', 
+                        justifyContent: 'space-between', 
+                        alignItems: 'flex-end',
+                        fontFamily: 'var(--font-body)', 
+                        textTransform: 'uppercase', 
+                        fontSize: '0.75rem', 
+                        letterSpacing: '2px', 
+                        color: 'var(--color-taupe)', 
+                        padding: '2.5rem 1.5rem 1.2rem 1.5rem',
+                        background: 'linear-gradient(to top, rgba(10,10,10,0.95) 0%, rgba(10,10,10,0.5) 60%, transparent 100%)',
+                        zIndex: 3 
+                      }}>
+                        <span style={{ color: 'var(--color-ivory)', fontWeight: 500 }}>{story.title}</span>
+                        <span style={{ fontSize: '0.65rem', opacity: 0.8 }}>{story.location} &mdash; {story.mood}</span>
                       </div>
                     </Link>
                   ))}
