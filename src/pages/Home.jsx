@@ -53,32 +53,6 @@ const Home = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  // The peek follows the cursor by writing straight to the DOM node. Keeping the
-  // pointer in a ref instead of state means moving the mouse never re-renders
-  // this (very large) page.
-  useEffect(() => {
-    const handleMouseMove = (e) => {
-      pointerRef.current = { x: e.clientX, y: e.clientY };
-      const el = peekRef.current;
-      if (el) {
-        el.style.left = `${e.clientX}px`;
-        el.style.top = `${e.clientY}px`;
-      }
-    };
-    window.addEventListener('mousemove', handleMouseMove, { passive: true });
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
-
-  // Place the peek at the last known cursor position the frame it mounts,
-  // otherwise its first paint lands wherever the pointer previously was.
-  useLayoutEffect(() => {
-    const el = peekRef.current;
-    if (el) {
-      el.style.left = `${pointerRef.current.x}px`;
-      el.style.top = `${pointerRef.current.y}px`;
-    }
-  }, [hoveredProject]);
-
   useGSAP(() => {
     // Hero Text Parallax & Fade
     gsap.to(heroTextRef.current, {
@@ -221,40 +195,6 @@ const Home = () => {
 
   return (
     <div ref={containerRef} style={{ background: 'var(--color-bg)' }}>
-
-
-
-      {/* 0. Floating Project Peek (Follows Mouse) */}
-      <AnimatePresence>
-        {hoveredProject && (
-          <motion.div
-            ref={peekRef}
-            // The cursor offset lives in Motion's x/y so it survives the scale and
-            // rotate animation. A plain CSS `transform` here would be overwritten.
-            initial={{ opacity: 0, scale: 0.8, rotate: -5, x: 40, y: '-50%' }}
-            animate={{ opacity: 1, scale: 1, rotate: 0, x: 40, y: '-50%' }}
-            exit={{ opacity: 0, scale: 0.8, rotate: 5, x: 40, y: '-50%' }}
-            transition={{ duration: 0.4, ease: [0.76, 0, 0.24, 1] }}
-            style={{
-              position: 'fixed',
-              top: 0,
-              left: 0,
-              width: '300px',
-              height: '400px',
-              zIndex: 50,
-              pointerEvents: 'none',
-              overflow: 'hidden',
-              boxShadow: '0 30px 60px rgba(0,0,0,0.5)'
-            }}
-          >
-            <img
-              src={hoveredProject.img}
-              alt=""
-              style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-            />
-          </motion.div>
-        )}
-      </AnimatePresence>
 
       <div className="footer-reveal-wrapper">
         {/* 1. Hero Section - Cinematic Image Slideshow */}
