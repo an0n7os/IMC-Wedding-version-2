@@ -661,19 +661,7 @@ const Home = () => {
             </div>
           </div>
         </section>
-        {/* 6.5 Agency Milestones (Trust & Scale) */}
-        <section className="section milestones-section" style={{ background: 'var(--color-ivory)', color: 'var(--color-bg)', padding: '6rem 0' }}>
-          <div className="container-wide" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', textAlign: 'center', flexWrap: 'wrap', gap: '3rem', padding: '0 5vw' }}>
-            {studioStats.map((stat, i) => (
-              <div key={i} style={{ flex: '1 1 200px' }}>
-                <h4 style={{ fontSize: '4rem', fontFamily: 'var(--font-heading)', color: 'var(--color-gold)', marginBottom: '0.5rem', lineHeight: 1 }}>
-                  <span className="stat-counter" data-target={stat.value}>0</span>{stat.suffix}
-                </h4>
-                <span style={{ fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '3px', fontWeight: 600, color: 'var(--color-taupe)' }}>{stat.label}</span>
-              </div>
-            ))}
-          </div>
-        </section>
+
 
         {/* 7. Inquiry Form (Emotional Tell Us Your Dream) */}
         <section id="inquiry" className="section" style={{ background: 'var(--color-bg)', color: 'var(--color-ivory)', minHeight: '100vh', display: 'flex', alignItems: 'center', position: 'relative', overflow: 'hidden' }}>
