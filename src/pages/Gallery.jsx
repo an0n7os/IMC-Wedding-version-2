@@ -108,47 +108,47 @@ const Gallery = () => {
                             {
                                 id: 'sunset-archives',
                                 title: <>Sunset<br/>Archives</>,
-                                col: '1 / 7', height: '65vh', mt: '2vh', isFeatured: false
+                                col: '1 / 7', height: '70vh', mt: '0', isFeatured: false
                             },
                             {
                                 id: 'namra-arshad',
                                 title: <>Namra<br/>Arshad</>,
-                                col: '7 / 13', height: '80vh', mt: '8vh', isFeatured: true
-                            },
-                            {
-                                id: 'varisha-tansih',
-                                title: <>Varisha<br/>Tansih</>,
-                                col: '2 / 8', height: '55vh', mt: '10vh', isFeatured: false
-                            },
-                            {
-                                id: 'ruksar-basith',
-                                title: <>Ruksar<br/>Basith</>,
-                                col: '8 / 13', height: '70vh', mt: '2vh', isFeatured: false
+                                col: '7 / 13', height: '70vh', mt: '0', isFeatured: false
                             },
                             {
                                 id: 'shifin-rahla',
-                                title: <>Shifin<br/>Rahla</>,
-                                col: '1 / 7', height: '75vh', mt: '6vh', isFeatured: true
+                                title: <>Shifin &<br/>Rahla</>,
+                                col: '1 / 7', height: '70vh', mt: '0', isFeatured: false
                             },
                             {
                                 id: 'dilsha-adil',
                                 title: <>Dilsha &<br/>Adil</>,
-                                col: '7 / 13', height: '70vh', mt: '10vh', isFeatured: false
+                                col: '7 / 13', height: '70vh', mt: '0', isFeatured: false
                             },
                             {
                                 id: 'shibil-shasiya',
                                 title: <>Shibil &<br/>Shasiya</>,
-                                col: '2 / 8', height: '75vh', mt: '6vh', isFeatured: true
+                                col: '1 / 7', height: '70vh', mt: '0', isFeatured: false
                             },
                             {
                                 id: 'hamza-balooshi',
                                 title: <>Hamza<br/>Balooshi</>,
-                                col: '8 / 13', height: '65vh', mt: '10vh', isFeatured: false
+                                col: '7 / 13', height: '70vh', mt: '0', isFeatured: false
+                            },
+                            {
+                                id: 'varisha-tansih',
+                                title: <>Varisha<br/>Tansih</>,
+                                col: '1 / 7', height: '70vh', mt: '0', isFeatured: false
+                            },
+                            {
+                                id: 'ruksar-basith',
+                                title: <>Ruksar<br/>Basith</>,
+                                col: '7 / 13', height: '70vh', mt: '0', isFeatured: false
                             },
                             {
                                 id: 'heritage-collective',
                                 title: <>The Heritage<br/>Collective</>,
-                                col: '3 / 11', height: '60vh', mt: '12vh', isFeatured: false
+                                col: '1 / 13', height: '75vh', mt: '0', isFeatured: true
                             }
                         ].map((mag) => {
                             const portData = portfolioData.find(p => p.id === mag.id);
