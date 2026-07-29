@@ -1,13 +1,13 @@
-import React, { useRef } from 'react';
+import { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 import { portfolioData } from '../data/portfolio';
 import SplitText from '../components/SplitText';
+import WeddingStories from '../components/WeddingStories';
 
 gsap.registerPlugin(ScrollTrigger);
-
 
 const Gallery = () => {
     const containerRef = useRef(null);
@@ -85,13 +85,16 @@ const Gallery = () => {
             <header className="section" style={{ minHeight: '30vh', display: 'flex', alignItems: 'flex-end', paddingBottom: '5vh' }}>
                 <div className="container-wide">
                     <div className="red-dot"></div>
-                    <Link to="/" className="interactive" data-cursor="nav-hover" style={{ fontSize: '0.6rem', textTransform: 'uppercase', letterSpacing: '2px', color: 'var(--color-taupe)', position: 'absolute', top: '2rem', left: '50%', transform: 'translateX(-50%)' }}>&larr; Back Home</Link>
-                    <span className="subtitle-mono" style={{ fontSize: '0.65rem', textTransform: 'uppercase', letterSpacing: '4px', color: 'var(--color-gold)', display: 'block', marginBottom: '1rem' }}>The Registry</span>
+                    <Link to="/" className="interactive" style={{ fontSize: '0.6rem', textTransform: 'uppercase', letterSpacing: '2px', color: 'var(--color-taupe)', position: 'absolute', top: '2rem', left: '50%', transform: 'translateX(-50%)' }}>&larr; Back Home</Link>
+                    <span className="subtitle-mono" style={{ fontSize: '0.65rem', textTransform: 'uppercase', letterSpacing: '4px', color: 'var(--color-gold)', display: 'block', marginBottom: '1rem' }}>The Gallery</span>
                     <h1 style={{ fontSize: 'clamp(3rem, 10vw, 7rem)', color: 'var(--color-ivory)', lineHeight: 0.9 }}>
-                        <SplitText className="reveal-liquid">Love & Architecture.</SplitText>
+                        <SplitText className="reveal-liquid">Our Wedding Stories.</SplitText>
                     </h1>
                 </div>
             </header>
+
+            {/* Live Interactive Wedding Stories Bar */}
+            <WeddingStories />
 
             {/* Magazine Collection */}
             <section className="section" style={{ paddingTop: '10vh' }}>
@@ -123,14 +126,29 @@ const Gallery = () => {
                                 col: '8 / 13', height: '70vh', mt: '2vh', isFeatured: false
                             },
                             {
+                                id: 'shifin-rahla',
+                                title: <>Shifin<br/>Rahla</>,
+                                col: '1 / 7', height: '75vh', mt: '6vh', isFeatured: true
+                            },
+                            {
+                                id: 'dilsha-adil',
+                                title: <>Dilsha &<br/>Adil</>,
+                                col: '7 / 13', height: '70vh', mt: '10vh', isFeatured: false
+                            },
+                            {
+                                id: 'shibil-shasiya',
+                                title: <>Shibil &<br/>Shasiya</>,
+                                col: '2 / 8', height: '75vh', mt: '6vh', isFeatured: true
+                            },
+                            {
                                 id: 'hamza-balooshi',
                                 title: <>Hamza<br/>Balooshi</>,
-                                col: '1 / 6', height: '75vh', mt: '5vh', isFeatured: false
+                                col: '8 / 13', height: '65vh', mt: '10vh', isFeatured: false
                             },
                             {
                                 id: 'heritage-collective',
                                 title: <>The Heritage<br/>Collective</>,
-                                col: '6 / 12', height: '60vh', mt: '15vh', isFeatured: false
+                                col: '3 / 11', height: '60vh', mt: '12vh', isFeatured: false
                             }
                         ].map((mag) => {
                             const portData = portfolioData.find(p => p.id === mag.id);
@@ -146,7 +164,6 @@ const Gallery = () => {
                                     key={mag.id}
                                     to={`/gallery/${mag.id}`} 
                                     className="magazine-issue interactive" 
-                                    data-cursor="view" 
                                     style={{ gridColumn: mag.col, marginTop: mag.mt }}
                                 >
                                     <div className="magazine-img-wrap" style={{ 
@@ -193,7 +210,15 @@ const Gallery = () => {
                 <style>{`
                     .magazine-issue { position: relative; transition: transform 0.8s var(--ease-cinematic); display: block; text-decoration: none; }
                     .magazine-issue:hover { transform: translateY(-12px); }
-                    .magazine-issue:hover img { opacity: 1 !important; transform: scale(1.05); filter: brightness(1.1); }\n                    \n                    .story-card .img-parallax { \n                        filter: grayscale(1); \n                        transition: filter 0.8s var(--ease-cinematic), transform 1.2s var(--ease-cinematic) !important; \n                    }\n                    .story-card:hover .img-parallax { \n                        filter: grayscale(0); \n                    }
+                    .magazine-issue:hover img { opacity: 1 !important; transform: scale(1.05); filter: brightness(1.1); }
+                    
+                    .story-card .img-parallax { 
+                        filter: grayscale(1); 
+                        transition: filter 0.8s var(--ease-cinematic), transform 1.2s var(--ease-cinematic) !important; 
+                    }
+                    .story-card:hover .img-parallax { 
+                        filter: grayscale(0); 
+                    }
                     
                     .magazine-overlay { 
                         position: absolute; inset: 0; 
@@ -249,8 +274,8 @@ const Gallery = () => {
             <section ref={storiesWrapRef} id="wedding-films" className="section stories-wrap" style={{ background: 'var(--color-bg)', padding: 0, overflow: 'hidden', position: 'relative' }}>
                 <div className="red-dot" style={{ position: 'absolute', top: '2rem', left: '50%', transform: 'translateX(-50%)', zIndex: 10 }}></div>
                 <div className="container-wide stories-header-wrap" style={{ position: 'relative', paddingTop: '7rem', paddingBottom: '2rem', textAlign: 'center', zIndex: 10 }}>
-                   <h2 style={{ fontSize: 'clamp(2rem, 6vw, 5rem)' }}><SplitText className="reveal-liquid">Stories Archive</SplitText></h2>
-                   <span className="subtitle-mono" style={{ fontSize: '0.6rem', color: 'var(--color-gold)', marginTop: '0.5rem', display: 'block', textTransform: 'uppercase', letterSpacing: '4px' }}>Wedding Stories</span>
+                   <h2 style={{ fontSize: 'clamp(2rem, 6vw, 5rem)' }}><SplitText className="reveal-liquid">Featured Weddings</SplitText></h2>
+                   <span className="subtitle-mono" style={{ fontSize: '0.6rem', color: 'var(--color-gold)', marginTop: '0.5rem', display: 'block', textTransform: 'uppercase', letterSpacing: '4px' }}>Full Wedding Films</span>
                 </div>
                 <div ref={storiesContainerRef} className="stories-container" style={{ display: 'flex', gap: '3rem', padding: '2rem 5vw 6rem 5vw', width: 'fit-content', willChange: 'transform' }}>
                   {stories.map(story => (
@@ -258,8 +283,7 @@ const Gallery = () => {
                       to={`/gallery/${story.slug}`}
                       key={story.id} 
                       className="story-card interactive" 
-                      style={{ width: '50vw', minWidth: '600px', height: '65vh', position: 'relative', display: 'block' }} 
-                      data-cursor="view"
+                      style={{ width: '50vw', minWidth: '600px', height: '65vh', position: 'relative', display: 'block' }}
                     >
                       <div style={{ overflow: 'hidden', width: '100%', height: '100%' }}>
                         <img className="img-parallax" src={story.img} alt={story.title} loading="lazy" decoding="async" style={{ width: '100%', height: '130%', objectFit: 'cover', top: '-15%', position: 'absolute' }} />
@@ -292,8 +316,8 @@ const Gallery = () => {
 
             <footer className="section" style={{ textAlign: 'center', marginTop: '5rem' }}>
                 <div className="diamond-separator"></div>
-                <h2 style={{ fontSize: '2.5rem', marginBottom: '3rem' }}><SplitText className="reveal-liquid">Every moment is a legacy.</SplitText></h2>
-                <Link to="/inquire" className="btn-premium-diamond interactive magnetic-btn" style={{ margin: '0 auto', display: 'inline-flex', textDecoration: 'none' }}>Book Your History</Link>
+                <h2 style={{ fontSize: '2.5rem', marginBottom: '3rem' }}><SplitText className="reveal-liquid">Let's capture your day too.</SplitText></h2>
+                <Link to="/inquire" className="btn-premium-diamond interactive magnetic-btn" style={{ margin: '0 auto', display: 'inline-flex', textDecoration: 'none' }}>Book Your Wedding</Link>
             </footer>
         </div>
     );

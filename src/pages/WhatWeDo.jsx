@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -75,24 +75,6 @@ const WhatWeDo = () => {
       }
     });
 
-    // 5. Animated Counters
-    const counters = gsap.utils.toArray('.counter');
-    counters.forEach((counter) => {
-      const target = parseInt(counter.dataset.target);
-      ScrollTrigger.create({
-        trigger: '.stats-band',
-        start: 'top 80%',
-        onEnter: () => {
-          gsap.to(counter, {
-            innerText: target,
-            duration: 2,
-            snap: { innerText: 1 },
-            ease: "power4.out"
-          });
-        }
-      });
-    });
-
   }, { scope: containerRef });
 
   return (
@@ -112,7 +94,7 @@ const WhatWeDo = () => {
         justifyContent: 'center', alignItems: 'center', position: 'relative', overflow: 'hidden'
       }}>
         <div className="hero-image-container" style={{ position: 'absolute', inset: 0, zIndex: 0 }}>
-          <img src="/images/hero_whatwedo.png" alt="Cinematic Background" style={{ 
+          <img src="/images/hero_whatwedo.jpg" alt="Cinematic Background" style={{ 
             width: '100%', height: '100%', objectFit: 'cover', 
             filter: 'brightness(0.35) contrast(1.1)',
             animation: 'slowZoom 20s ease-out infinite alternate' 
@@ -136,10 +118,10 @@ const WhatWeDo = () => {
           <span className="hero-title-line" style={{ display: 'block' }}><span>What We</span></span>
           <span className="hero-title-line" style={{ display: 'block' }}><span>Create</span></span>
         </h1>
-        <p className="hero-sub" style={{ 
-          fontSize: '0.9rem', fontWeight: 300, letterSpacing: '0.08em', 
-          color: 'rgba(255,255,255,0.6)', maxWidth: '400px', textAlign: 'center', lineHeight: 2, zIndex: 1 
-        }}>Four pillars of artistry — each one crafted to preserve the unrepeatable moments of your story.</p>
+        <p className="hero-sub" style={{
+          fontSize: '0.9rem', fontWeight: 300, letterSpacing: '0.08em',
+          color: 'rgba(255,255,255,0.6)', maxWidth: '400px', textAlign: 'center', lineHeight: 2, zIndex: 1
+        }}>Four services, one goal &mdash; capturing your day the way it truly felt.</p>
 
         <div className="scroll-cue" style={{ position: 'absolute', bottom: '3rem', zIndex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
           <div className="scroll-cue-line" style={{ width: '1px', height: '60px', background: 'linear-gradient(to bottom, var(--color-gold), transparent)' }}></div>
@@ -158,166 +140,166 @@ const WhatWeDo = () => {
           <div className="service-content-panel">
             <div className="svc-eyebrow">
               <span className="svc-eyebrow-line"></span>
-              <span className="svc-eyebrow-text">The Prelude</span>
+              <span className="svc-eyebrow-text">Pre-Wedding Shoot</span>
             </div>
             <h2 className="svc-title"><span className="svc-title-inner">Signature<br/>Engagement</span></h2>
             <p className="svc-desc">
-              Your story begins here. We craft intimate pre-wedding narratives that capture the raw chemistry and quiet anticipation before the grand celebration.
+              A relaxed shoot before your wedding, just the two of you. We give you time to get comfortable in front of the camera before the big day.
             </p>
-            
+
             <div className="studio-specs-grid">
                <div className="spec-item">
-                 <span className="spec-label">Optics</span>
-                 <span className="spec-value">35mm Prime Arc</span>
+                 <span className="spec-label">Camera</span>
+                 <span className="spec-value">Cinema-grade lenses</span>
                </div>
                <div className="spec-item">
-                 <span className="spec-label">Format</span>
-                 <span className="spec-value">4K ProRes 10-bit</span>
+                 <span className="spec-label">Video</span>
+                 <span className="spec-value">4K Ultra HD</span>
                </div>
                <div className="spec-item">
-                 <span className="spec-label">Color Space</span>
-                 <span className="spec-value">S-Log3 Narrative</span>
+                 <span className="spec-label">Look</span>
+                 <span className="spec-value">Natural, film-like color</span>
                </div>
                <div className="spec-item">
                  <span className="spec-label">Delivery</span>
-                 <span className="spec-value">Editorial Archive</span>
+                 <span className="spec-value">Online gallery, ready to share</span>
                </div>
             </div>
 
             <p style={{ fontStyle: 'italic', color: 'var(--color-gold)', opacity: 0.7, fontSize: '0.85rem', margin: '2rem 0', fontFamily: 'var(--font-serif-elegant)' }}>
-               "Seeking the foundational chemistry—the silence between the words." — Aswin
+               "We wait for the small, real moments most people miss." — Nishad Chatholi
             </p>
 
-            <Link to="/inquire" className="svc-cta">Inquire for shoot <span className="svc-cta-arrow"></span></Link>
+            <Link to="/inquire" className="svc-cta">Book a Shoot <span className="svc-cta-arrow"></span></Link>
           </div>
         </section>
 
         {/* Service 02 */}
         <section className="service-section alt" id="s2">
           <div className="service-img-panel">
-            <img src="/images/wedding_photography.png" alt="Documentary Weddings" loading="lazy" decoding="async" />
+            <img src="/images/wedding_photography.jpg" alt="Documentary Weddings" loading="lazy" decoding="async" />
             <span className="img-num">02</span>
           </div>
           <div className="service-content-panel">
             <div className="svc-eyebrow">
               <span className="svc-eyebrow-line"></span>
-              <span className="svc-eyebrow-text">The Legacy</span>
+              <span className="svc-eyebrow-text">Wedding Day</span>
             </div>
             <h2 className="svc-title"><span className="svc-title-inner">Documentary<br/>Weddings</span></h2>
             <p className="svc-desc">
-              High-art photography meets soulful documentary. We don't just shoot events; we archive legacies of light and truth.
+              We photograph and film your wedding as it happens &mdash; real moments, real emotions, not posed setups.
             </p>
 
             <div className="studio-specs-grid">
                <div className="spec-item">
-                 <span className="spec-label">Process</span>
-                 <span className="spec-value">Poetic Realism</span>
+                 <span className="spec-label">Style</span>
+                 <span className="spec-value">Candid, natural coverage</span>
                </div>
                <div className="spec-item">
-                 <span className="spec-label">Grade</span>
-                 <span className="spec-value">Signature Film Grain</span>
+                 <span className="spec-label">Editing</span>
+                 <span className="spec-value">Warm, timeless color</span>
                </div>
                <div className="spec-item">
-                 <span className="spec-label">Audio</span>
-                 <span className="spec-value">32-bit Float Audio</span>
+                 <span className="spec-label">Sound</span>
+                 <span className="spec-value">Clear, professional audio</span>
                </div>
                <div className="spec-item">
-                 <span className="spec-label">Heritage</span>
-                 <span className="spec-value">Legacy Archive Boxes</span>
+                 <span className="spec-label">Delivery</span>
+                 <span className="spec-value">Photo album + USB box</span>
                </div>
             </div>
 
             <p style={{ fontStyle: 'italic', color: 'var(--color-gold)', opacity: 0.7, fontSize: '0.85rem', margin: '2rem 0', fontFamily: 'var(--font-serif-elegant)' }}>
-               "We visualize the feeling before it happens." — Sreenath
+               "We plan ahead so we never miss the big moments." — IMC Weddings Team
             </p>
 
-            <Link to="/inquire" className="svc-cta">Request Brochure <span className="svc-cta-arrow"></span></Link>
+            <Link to="/inquire" className="svc-cta">Ask About Availability <span className="svc-cta-arrow"></span></Link>
           </div>
         </section>
 
         {/* Service 03 */}
         <section className="service-section" id="s3">
           <div className="service-img-panel">
-            <img src="/images/editing_color.png" alt="Cinema Post-Production" loading="lazy" decoding="async" />
+            <img src="/images/editing_color.jpg" alt="Cinema Post-Production" loading="lazy" decoding="async" />
             <span className="img-num">03</span>
           </div>
           <div className="service-content-panel">
             <div className="svc-eyebrow">
               <span className="svc-eyebrow-line"></span>
-              <span className="svc-eyebrow-text">The Artistry</span>
+              <span className="svc-eyebrow-text">Editing</span>
             </div>
-            <h2 className="svc-title"><span className="svc-title-inner">Cinema<br/>Post-Production</span></h2>
+            <h2 className="svc-title"><span className="svc-title-inner">Editing &amp;<br/>Color Grading</span></h2>
             <p className="svc-desc">
-              Our in-house boutique lab specializes in custom color science and immersive sound design. Meticulously graded to a timeless palette.
+              Our in-house editing team color-grades every photo and video, so your wedding looks as beautiful on screen as it felt in person.
             </p>
 
             <div className="studio-specs-grid">
                <div className="spec-item">
-                 <span className="spec-label">Engine</span>
-                 <span className="spec-value">DaVinci Resolve Lab</span>
+                 <span className="spec-label">Software</span>
+                 <span className="spec-value">Professional color tools</span>
                </div>
                <div className="spec-item">
-                 <span className="spec-label">Workflow</span>
-                 <span className="spec-value">ACES 2.0 Standard</span>
+                 <span className="spec-label">Process</span>
+                 <span className="spec-value">Careful, frame-by-frame edit</span>
                </div>
                <div className="spec-item">
-                 <span className="spec-label">Export</span>
-                 <span className="spec-value">Rec.2020 HDR Archive</span>
+                 <span className="spec-label">Quality</span>
+                 <span className="spec-value">Ready for TV &amp; phone</span>
                </div>
                <div className="spec-item">
-                 <span className="spec-label">Audio</span>
-                 <span className="spec-value">5.1 Surround Suite</span>
+                 <span className="spec-label">Sound Mix</span>
+                 <span className="spec-value">Cinema-quality audio</span>
                </div>
             </div>
 
             <p style={{ fontStyle: 'italic', color: 'var(--color-gold)', opacity: 0.7, fontSize: '0.85rem', margin: '2rem 0', fontFamily: 'var(--font-serif-elegant)' }}>
-               "Colors are memories given light." — Lead Editor
+               "Good editing makes your memories feel alive again." — Lead Editor
             </p>
 
-            <Link to="/inquire" className="svc-cta">See workflow <span className="svc-cta-arrow"></span></Link>
+            <Link to="/inquire" className="svc-cta">See Our Editing Style <span className="svc-cta-arrow"></span></Link>
           </div>
         </section>
 
         {/* Service 04 */}
         <section className="service-section alt" id="s4" style={{ borderBottom: 'none' }}>
           <div className="service-img-panel">
-            <img src="/images/corporate_events.png" alt="Bespoke Branding" loading="lazy" decoding="async" />
+            <img src="/images/corporate_events.jpg" alt="Brand and corporate shoot" loading="lazy" decoding="async" />
             <span className="img-num">04</span>
           </div>
           <div className="service-content-panel">
             <div className="svc-eyebrow">
               <span className="svc-eyebrow-line"></span>
-              <span className="svc-eyebrow-text">The Brand</span>
+              <span className="svc-eyebrow-text">For Brands</span>
             </div>
-            <h2 className="svc-title"><span className="svc-title-inner">Bespoke<br/>Branding</span></h2>
+            <h2 className="svc-title"><span className="svc-title-inner">Brand &amp;<br/>Corporate Shoots</span></h2>
             <p className="svc-desc">
-              For elite organizations and visionary brands. Strategic visual storytelling that elevates presence with an editorial, premium soul.
+              For businesses and brands that want premium photos and videos for marketing, events, or product launches.
             </p>
 
             <div className="studio-specs-grid">
                <div className="spec-item">
-                 <span className="spec-label">Vision</span>
-                 <span className="spec-value">High-Prestige Strategy</span>
+                 <span className="spec-label">Approach</span>
+                 <span className="spec-value">Planned around your goals</span>
                </div>
                <div className="spec-item">
-                 <span className="spec-label">Gear</span>
-                 <span className="spec-value">8K RAW Acquisition</span>
+                 <span className="spec-label">Camera</span>
+                 <span className="spec-value">Ultra high-resolution</span>
                </div>
                <div className="spec-item">
                  <span className="spec-label">Style</span>
-                 <span className="spec-value">Editorial & High-Fashion</span>
+                 <span className="spec-value">Clean, modern, professional</span>
                </div>
                <div className="spec-item">
-                 <span className="spec-label">Purpose</span>
-                 <span className="spec-value">Commercial Manifesto</span>
+                 <span className="spec-label">Use</span>
+                 <span className="spec-value">Marketing &amp; social media</span>
                </div>
             </div>
 
             <p style={{ fontStyle: 'italic', color: 'var(--color-gold)', opacity: 0.7, fontSize: '0.85rem', margin: '2rem 0', fontFamily: 'var(--font-serif-elegant)' }}>
-               "Transforming concepts into cinematic poetry." — IMC Team
+               "We help your brand look as good on camera as it does in person." — IMC Team
             </p>
 
-            <Link to="/inquire" className="svc-cta">Collaborate <span className="svc-cta-arrow"></span></Link>
+            <Link to="/inquire" className="svc-cta">Talk To Us <span className="svc-cta-arrow"></span></Link>
           </div>
         </section>
       </div>
@@ -335,36 +317,6 @@ const WhatWeDo = () => {
           We don't just capture moments —<br/>we preserve the <em style={{ color: 'var(--color-gold)' }}>feeling</em> between them.<br/>The glance. The pause. The exhale.
         </blockquote>
       </section>
-
-      {/* ═══ STATS BAND ═══ */}
-      <div className="stats-band" style={{ background: 'var(--color-bg)', padding: '8rem 5vw', position: 'relative', overflow: 'hidden' }}>
-        <div className="stats-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '2rem' }}>
-          <div className="stat-item" style={{ textAlign: 'center' }}>
-            <div style={{ fontFamily: "var(--font-heading)", fontSize: '5rem', color: 'var(--color-gold)' }}>
-              <span className="counter" data-target="1300">0</span>+
-            </div>
-            <div style={{ fontSize: '0.65rem', letterSpacing: '0.4em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.4)', marginTop: '1rem' }}>Weddings Captured</div>
-          </div>
-          <div className="stat-item" style={{ textAlign: 'center' }}>
-            <div style={{ fontFamily: "var(--font-heading)", fontSize: '5rem', color: 'var(--color-gold)' }}>
-              <span className="counter" data-target="10">0</span>
-            </div>
-            <div style={{ fontSize: '0.65rem', letterSpacing: '0.4em', textTransform: 'uppercase', color: 'rgba(253,251,247,0.4)', marginTop: '1rem' }}>Years of Excellence</div>
-          </div>
-          <div className="stat-item" style={{ textAlign: 'center' }}>
-            <div style={{ fontFamily: "var(--font-heading)", fontSize: '5rem', color: 'var(--color-gold)' }}>
-              <span className="counter" data-target="12">0</span>+
-            </div>
-            <div style={{ fontSize: '0.65rem', letterSpacing: '0.4em', textTransform: 'uppercase', color: 'rgba(253,251,247,0.4)', marginTop: '1rem' }}>Countries Covered</div>
-          </div>
-          <div className="stat-item" style={{ textAlign: 'center' }}>
-            <div style={{ fontFamily: "var(--font-heading)", fontSize: '5rem', color: 'var(--color-gold)' }}>
-              <span className="counter" data-target="20">0</span>K+
-            </div>
-            <div style={{ fontSize: '0.65rem', letterSpacing: '0.4em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.4)', marginTop: '1rem' }}>Cinema Line Cameras</div>
-          </div>
-        </div>
-      </div>
 
       <style>{`
         @keyframes slowZoom {

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, Suspense, lazy } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Lenis from 'lenis';
 import { gsap } from 'gsap';
@@ -8,23 +8,35 @@ import { useLocation } from 'react-router-dom';
 
 // Components
 import Navbar from './components/Navbar';
-import CustomCursor from './components/CustomCursor';
 import ScrollToTop from './components/ScrollToTop';
 import Preloader from './components/Preloader';
 import ReelModal from './components/ReelModal';
 import Footer from './components/Footer';
 import { WhatsappLogo, ArrowUp } from 'phosphor-react';
+import { siteMeta } from './data/portfolio';
 
-// Pages
+// Home loads eagerly — it's the page almost every visitor lands on first, so
+// there's no point paying a lazy-load waterfall for the common case. Every
+// other route only downloads its JS once someone actually navigates there.
 import Home from './pages/Home';
-import About from './pages/About';
-import Gallery from './pages/Gallery';
-import Films from './pages/Films';
-import Info from './pages/Info';
-import WhatWeDo from './pages/WhatWeDo';
-import Inquire from './pages/Inquire';
-import ProjectDetail from './pages/ProjectDetail';
-import NotFound from './pages/NotFound';
+const About = lazy(() => import('./pages/About'));
+const Gallery = lazy(() => import('./pages/Gallery'));
+const Films = lazy(() => import('./pages/Films'));
+const WhatWeDo = lazy(() => import('./pages/WhatWeDo'));
+const Inquire = lazy(() => import('./pages/Inquire'));
+const ProjectDetail = lazy(() => import('./pages/ProjectDetail'));
+const NotFound = lazy(() => import('./pages/NotFound'));
+
+// Shown only while a lazy-loaded route's JS chunk is still downloading —
+// on a fast connection this never gets a chance to render.
+function RouteFallback() {
+  return (
+    <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'var(--color-bg)' }}>
+      <div style={{ width: '28px', height: '28px', border: '2px solid rgba(212, 175, 55, 0.15)', borderTopColor: 'var(--color-gold)', borderRadius: '50%', animation: 'route-spin 0.8s linear infinite' }} />
+      <style>{`@keyframes route-spin { to { transform: rotate(360deg); } }`}</style>
+    </div>
+  );
+}
 
 function AppContent() {
   const [loading, setLoading] = useState(true);
@@ -58,7 +70,6 @@ function AppContent() {
       lerp: 0.12,
       smoothWheel: true,
       wheelMultiplier: 1.2,
-      smoothTouch: false,
     });
 
     lenisRef.current = lenis;
@@ -106,7 +117,6 @@ function AppContent() {
         {loading && <Preloader setLoading={setLoading} key="preloader" />}
       </AnimatePresence>
 
-      <CustomCursor />
       <Navbar />
       
       {/* Gold Scroll Progress Bar */}
@@ -123,12 +133,10 @@ function AppContent() {
         pointerEvents: 'none',
         boxShadow: '0 0 8px rgba(201, 168, 76, 0.6)',
       }} />
-
-      {/* Cinematic Showreel Modal */}
       <ReelModal
         isOpen={reelOpen}
         onClose={() => setReelOpen(false)}
-        reelUrl="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+        reelUrl="https://joy1.videvo.net/videvo_files/video/free/2021-04/large_watermarked/210329_06_Full%20Open%20Wedding_4k_045_preview.mp4"
       />
 
       <AnimatePresence mode="wait">
@@ -139,20 +147,20 @@ function AppContent() {
           exit={{ opacity: 0 }}
           transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
         >
-          <Routes location={location} key={location.pathname}>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/gallery" element={<Gallery />} />
-            <Route path="/gallery/:id" element={<ProjectDetail />} />
-            <Route path="/stories" element={<Films />} />
-            <Route path="/info" element={<Info />} />
-            <Route path="/inquire" element={<Inquire />} />
-            <Route path="/what-we-do" element={<WhatWeDo />} />
-            <Route path="/wedding" element={<Films />} />
-            <Route path="/portfolio" element={<Gallery />} />
-            <Route path="/learn" element={<Info />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
+          <Suspense fallback={<RouteFallback />}>
+            <Routes location={location} key={location.pathname}>
+              <Route path="/" element={<Home />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/gallery" element={<Gallery />} />
+              <Route path="/gallery/:id" element={<ProjectDetail />} />
+              <Route path="/stories" element={<Films />} />
+              <Route path="/inquire" element={<Inquire />} />
+              <Route path="/what-we-do" element={<WhatWeDo />} />
+              <Route path="/wedding" element={<Films />} />
+              <Route path="/portfolio" element={<Gallery />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </Suspense>
         </motion.main>
       </AnimatePresence>
 
@@ -160,7 +168,7 @@ function AppContent() {
 
       <div className="floating-actions">
         <a 
-          href="https://wa.me/918075358113?text=Hi%20IMC%20Weddings!%20I'm%20interested%20in%20booking%20your%20services%20for%20my%20wedding." 
+          href={`https://wa.me/${siteMeta.contact.whatsapp}?text=${encodeURIComponent("Hi IMC Weddings! I'm interested in booking your services for my wedding.")}`}
           target="_blank" 
           rel="noreferrer" 
           className="wa-btn interactive"

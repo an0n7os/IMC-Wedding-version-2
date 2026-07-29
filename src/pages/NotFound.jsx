@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'phosphor-react';
 
@@ -21,9 +20,9 @@ const NotFound = () => {
         A Story<br/>Not Found.
       </h1>
       <p style={{ color: 'var(--color-taupe)', maxWidth: '500px', lineHeight: 1.8, marginBottom: '4rem', fontSize: '1.1rem' }}>
-        The chapter you are looking for has not been archived yet, or it has moved to another part of the legacy.
+        The page you're looking for doesn't exist, or it may have moved.
       </p>
-      <Link to="/" className="interactive btn-premium-diamond" style={{ display: 'inline-flex', padding: '1rem 3rem' }} data-cursor="explore">
+      <Link to="/" className="interactive btn-premium-diamond" style={{ display: 'inline-flex', padding: '1rem 3rem' }}>
         <span className="btn-icon" style={{ marginLeft: 0, marginRight: '1rem' }}><ArrowLeft weight="bold" /></span>
         <span className="btn-text">Return Home</span>
       </Link>

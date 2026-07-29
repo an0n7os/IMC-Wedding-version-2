@@ -1,14 +1,38 @@
+/**
+ * Single source of truth for studio facts. These used to be retyped on every
+ * page, which is how the founding year, the award count and the wedding count
+ * ended up disagreeing with each other. Change them here only.
+ */
+export const siteMeta = {
+  foundedYear: 2016,
+  contact: {
+    // General enquiry line behind the floating button and the inquiry form.
+    whatsapp: '971506377538',
+    indiaDesk: { display: '+91 81296 03890', wa: '918129603890' },
+    uaeDesk: { display: '+971 50 637 7538', wa: '971506377538' },
+    email: 'info@imcweddings.com',
+    instagram: '_imcweddings_',
+  },
+};
+
+export const studioStats = [
+  { value: 500, suffix: '+', label: 'Love Stories Captured' },
+  { value: 15, suffix: '+', label: 'Destination Countries' },
+  { value: 12, suffix: '', label: 'Global Awards Won' },
+  { value: new Date().getFullYear() - siteMeta.foundedYear, suffix: '+', label: 'Years of Magic' },
+];
+
 export const portfolioData = [
   {
     id: 'heritage-collective',
     title: 'The Heritage Collective',
     slug: 'heritage-collective',
-    location: 'GLOBAL ARCHIVE',
-    date: 'ESTD. 2014',
+    location: 'KERALA & BEYOND',
+    date: `SINCE ${siteMeta.foundedYear}`,
     mood: 'Definitive & Timeless',
     category: 'Magazine Album',
     featured: true,
-    description: 'A deep-vault master archive showcasing the breadth of our cinematic journey. From intimate details in Bahrain to grand celebrations in Jaipur, this collection encompasses the essence of IMC Weddings.',
+    description: 'A look back at our favourite moments over the years — from intimate details in Bahrain to grand celebrations in Jaipur.',
     img: '/images/DSC00018.jpeg',
     heroImg: '/images/DSC00018.jpeg',
     gallery: [
@@ -16,7 +40,7 @@ export const portfolioData = [
       { url: '/images/athira...jpeg', size: 'large' },
       { url: '/images/roshan...jpeg', size: 'small' },
       { url: '/images/weddinggallery-lilen-diaz-1025474869-32195697.jpg', size: 'small' },
-      { url: '/images/media__1774727464040.png', size: 'large' },
+      { url: '/images/wedding_details_1774728672884.jpg', size: 'large' },
       { url: '/images/insta.jpeg', size: 'small' },
     ]
   },
@@ -29,7 +53,7 @@ export const portfolioData = [
     mood: 'Luminous / Regal',
     category: 'Wedding',
     featured: true,
-    description: "A royal affair in the heart of Trivandrum, Hazeera's wedding was a masterclass in traditional elegance. We captured the intricate details of her couture and the soulful glances that defined this beginning.",
+    description: "A golden-hour wedding in the heart of Trivandrum, full of traditional elegance. We captured the intricate details of the couture and the soulful glances that defined this beginning.",
     img: '/images/DSC00031.JPG',
     heroImg: '/images/DSC00031.JPG',
     gallery: [
@@ -41,22 +65,22 @@ export const portfolioData = [
     ]
   },
   {
-    id: 'amber-nav',
+    id: 'hazeera-tanveer',
     title: 'HAZEERA TANVEER',
-    slug: 'amber-nav',
-    location: 'Banglore',
+    slug: 'hazeera-tanveer',
+    location: 'Bangalore',
     date: 'SEPTEMBER 2025',
     mood: 'Ethereal & Atmospheric',
     category: 'Elopement',
     featured: true,
-    description: 'An intimate elopement amidst the rugged beauty of the Scottish Highlands. The mist-covered mountains and the quiet strength of the landscape served as the perfect witnesses to their vows.',
+    description: 'An intimate elopement in Bangalore, kept small and quiet by choice. Just the two of them, a handful of loved ones, and the kind of stillness that let every real moment come through.',
     img: '/images/DSC09671.jpeg',
     heroImg: '/images/DSC09671.jpeg',
     gallery: [
-      { url: '/images/DSC07145.JPG', size: 'large' },
-      { url: '/images/DSC00022.JPG', size: 'small' },
-      { url: '/images/DSC06691.JPG', size: 'small' },
-      { url: '/images/DSC00022.JPG', size: 'wide' },
+      { url: '/images/magazine/DSC07145.JPG', size: 'large' },
+      { url: '/images/magazine/DSC00022.JPG', size: 'small' },
+      { url: '/images/magazine/DSC06691.JPG', size: 'small' },
+      { url: '/images/DSC07257.JPG', size: 'wide' },
       { url: '/images/DSC00041.jpeg', size: 'large' },
     ]
   },
@@ -94,8 +118,8 @@ export const portfolioData = [
     gallery: [
       { url: '/images/magazine/IMG_7880.JPG', size: 'large' },
       { url: '/images/magazine/IMG_7881.JPG', size: 'wide' },
-      { url: '/images/magazine/IMG_7882.JPG', size: 'large' },
-      { url: '/images/magazine/IMG_7883.JPG', size: 'small' },
+      { url: '/images/magazine/IMG_7895.JPG', size: 'large' },
+      { url: '/images/magazine/IMG_7900.JPG', size: 'small' },
     ]
   },
   {
@@ -113,8 +137,8 @@ export const portfolioData = [
     gallery: [
       { url: '/images/magazine/HAMZA_A1-17.jpg', size: 'large' },
       { url: '/images/magazine/HAMZA_A1-48.jpg', size: 'wide' },
-      { url: '/images/magazine/HAMZA_A1-3.jpg', size: 'large' },
-      { url: '/images/magazine/HAMZA_A1-7.jpg', size: 'small' },
+      { url: '/images/HAMZA_A1-3.jpg', size: 'large' },
+      { url: '/images/magazine/NAMRA ARSHAD.JPG', size: 'small' },
     ]
   },
   {
@@ -160,21 +184,21 @@ export const portfolioData = [
     category: 'Wedding',
     featured: true,
     description: 'Captured amidst the historic grandeur of Jaipur’s pink city palaces. Dipika and Jay’s wedding was a masterclass in royal elegance and soulful celebration.',
-    img: '/images/wedding_details_1774728672884.png',
-    heroImg: '/images/wedding_details_1774728672884.png',
+    img: '/images/wedding_details_1774728672884.jpg',
+    heroImg: '/images/wedding_details_1774728672884.jpg',
     gallery: [
       { url: '/images/DSC09671.jpeg', size: 'large' },
       { url: '/images/DSC09779.jpeg', size: 'small' },
       { url: '/images/HAMZA_A1-3.jpg', size: 'small' },
-      { url: '/images/HAMZA_A1-7.jpg', size: 'wide' },
+      { url: '/images/DSC08078.jpeg', size: 'wide' },
       { url: '/images/IMC_RB_-30 2.JPG', size: 'small' },
       { url: '/images/IMC_RB_-36 2.JPG', size: 'small' },
     ]
   },
   {
-    id: 'amber-nav-scotland',
+    id: 'amber-nav',
     title: 'Amber & Nav',
-    slug: 'amber-nav-scotland',
+    slug: 'amber-nav',
     location: 'ISLE OF SKYE, SCOTLAND',
     date: 'JANUARY 13, 2026',
     mood: 'Ethereal & Atmospheric',
@@ -184,6 +208,141 @@ export const portfolioData = [
     img: '/images/IMC_RB_-38 2.JPG',
     heroImg: '/images/IMC_RB_-40 2.JPG',
     gallery: []
+  },
+  {
+    id: 'shifin-rahla',
+    externalLink: 'https://nishaddahsin.wfolio.pro/disk/2026-07-26-shifin-rahla-wed-jd41lp',
+    title: 'Shifin Rahla',
+    slug: 'shifin-rahla',
+    location: 'KERALA, INDIA',
+    date: 'JULY 2026',
+    mood: 'Regal & Radiant',
+    category: 'Magazine Album',
+    featured: true,
+    description: 'A rich bridal story in red and ivory, shaped around graceful portraits, quiet stage moments, and the glow of a wedding day held close by family.',
+    img: '/images/shifin-rahla/bride-07.jpg',
+    heroImg: '/images/shifin-rahla/bride-06.jpg',
+    gallery: [
+      { url: '/images/shifin-rahla/bride-01.jpg', size: 'large' },
+      { url: '/images/shifin-rahla/bride-02.jpg', size: 'small' },
+      { url: '/images/shifin-rahla/bride-03.jpg', size: 'small' },
+      { url: '/images/shifin-rahla/bride-04.jpg', size: 'wide' },
+      { url: '/images/shifin-rahla/bride-05.jpg', size: 'large' },
+      { url: '/images/shifin-rahla/bride-06.jpg', size: 'small' },
+      { url: '/images/shifin-rahla/bride-07.jpg', size: 'large' },
+      { url: '/images/shifin-rahla/bride-08.jpg', size: 'small' },
+      { url: '/images/shifin-rahla/bride-09.jpg', size: 'small' },
+      { url: '/images/shifin-rahla/bride-10.jpg', size: 'wide' },
+      { url: '/images/shifin-rahla/bride-11.jpg', size: 'large' },
+      { url: '/images/shifin-rahla/bride-12.jpg', size: 'small' },
+      { url: '/images/shifin-rahla/bride-13.jpg', size: 'large' },
+      { url: '/images/shifin-rahla/bride-14.jpg', size: 'small' },
+      { url: '/images/shifin-rahla/bride-15.jpg', size: 'small' },
+      { url: '/images/shifin-rahla/bride-16.jpg', size: 'wide' },
+      { url: '/images/shifin-rahla/bride-17.jpg', size: 'large' },
+      { url: '/images/shifin-rahla/bride-18.jpg', size: 'small' },
+      { url: '/images/shifin-rahla/bride-19.jpg', size: 'large' },
+      { url: '/images/shifin-rahla/bride-20.jpg', size: 'small' },
+      { url: '/images/shifin-rahla/bride-21.jpg', size: 'small' },
+      { url: '/images/shifin-rahla/bride-22.jpg', size: 'wide' },
+      { url: '/images/shifin-rahla/bride-23.jpg', size: 'large' },
+      { url: '/images/shifin-rahla/bride-24.jpg', size: 'small' },
+      { url: '/images/shifin-rahla/bride-25.jpg', size: 'large' },
+      { url: '/images/shifin-rahla/bride-26.jpg', size: 'small' },
+      { url: '/images/shifin-rahla/bride-27.jpg', size: 'small' },
+      { url: '/images/shifin-rahla/bride-28.jpg', size: 'wide' },
+      { url: '/images/shifin-rahla/bride-29.jpg', size: 'large' },
+      { url: '/images/shifin-rahla/bride-30.jpg', size: 'small' },
+      { url: '/images/shifin-rahla/bride-31.jpg', size: 'large' },
+      { url: '/images/shifin-rahla/bride-32.jpg', size: 'small' },
+      { url: '/images/shifin-rahla/bride-33.jpg', size: 'small' },
+      { url: '/images/shifin-rahla/bride-34.jpg', size: 'wide' },
+      { url: '/images/shifin-rahla/bride-35.jpg', size: 'large' },
+      { url: '/images/shifin-rahla/bride-36.jpg', size: 'small' },
+      { url: '/images/shifin-rahla/bride-37.jpg', size: 'large' },
+      { url: '/images/shifin-rahla/bride-38.jpg', size: 'small' },
+      { url: '/images/shifin-rahla/bride-39.jpg', size: 'small' },
+      { url: '/images/shifin-rahla/bride-40.jpg', size: 'wide' },
+      { url: '/images/shifin-rahla/bride-41.jpg', size: 'large' },
+      { url: '/images/shifin-rahla/bride-42.jpg', size: 'small' },
+      { url: '/images/shifin-rahla/bride-43.jpg', size: 'large' },
+      { url: '/images/shifin-rahla/bride-44.jpg', size: 'small' },
+      { url: '/images/shifin-rahla/bride-45.jpg', size: 'small' },
+      { url: '/images/shifin-rahla/bride-46.jpg', size: 'wide' },
+      { url: '/images/shifin-rahla/bride-47.jpg', size: 'large' },
+      { url: '/images/shifin-rahla/bride-48.jpg', size: 'small' },
+      { url: '/images/shifin-rahla/bride-49.jpg', size: 'large' },
+      { url: '/images/shifin-rahla/bride-50.jpg', size: 'small' },
+      { url: '/images/shifin-rahla/bride-51.jpg', size: 'small' },
+      { url: '/images/shifin-rahla/bride-52.jpg', size: 'wide' },
+      { url: '/images/shifin-rahla/bride-53.jpg', size: 'large' },
+      { url: '/images/shifin-rahla/bride-54.jpg', size: 'small' },
+      { url: '/images/shifin-rahla/bride-55.jpg', size: 'large' },
+      { url: '/images/shifin-rahla/bride-56.jpg', size: 'small' },
+      { url: '/images/shifin-rahla/bride-57.jpg', size: 'small' },
+    ]
+  },
+  {
+    id: 'shibil-shasiya',
+    externalLink: 'https://nishaddahsin.wfolio.pro/disk/shibil-shasiya-21p9rw',
+    title: 'Shibil & Shasiya',
+    slug: 'shibil-shasiya',
+    location: 'KERALA, INDIA',
+    date: 'FEBRUARY 2026',
+    mood: 'Joyful & Intimate',
+    category: 'Magazine Album',
+    featured: true,
+    description: 'A celebration full of noise and colour — confetti in the air, family cheering from every side, and the quiet glances in between. We stayed close and let the day tell its own story.',
+    img: '/images/shibil-shasiya/bride-08.jpg',
+    heroImg: '/images/shibil-shasiya/bride-10.jpg',
+    gallery: [
+      { url: '/images/shibil-shasiya/bride-01.jpg', size: 'large' },
+      { url: '/images/shibil-shasiya/bride-02.jpg', size: 'small' },
+      { url: '/images/shibil-shasiya/bride-03.jpg', size: 'small' },
+      { url: '/images/shibil-shasiya/bride-04.jpg', size: 'large' },
+      { url: '/images/shibil-shasiya/bride-05.jpg', size: 'wide' },
+      { url: '/images/shibil-shasiya/bride-06.jpg', size: 'small' },
+      { url: '/images/shibil-shasiya/bride-07.jpg', size: 'large' },
+      { url: '/images/shibil-shasiya/bride-08.jpg', size: 'small' },
+      { url: '/images/shibil-shasiya/bride-09.jpg', size: 'large' },
+      { url: '/images/shibil-shasiya/bride-10.jpg', size: 'wide' },
+    ]
+  },
+  {
+    id: 'dilsha-adil',
+    externalLink: 'https://nishaddahsin.wfolio.pro/disk/2026-07-09-dilsha-adil-s71xlv',
+    title: 'Dilsha & Adil',
+    slug: 'dilsha-adil',
+    location: 'KERALA, INDIA',
+    date: 'JULY 2026',
+    mood: 'Golden & Celebratory',
+    category: 'Magazine Album',
+    featured: true,
+    description: 'Gold and ivory, sparklers and confetti — the grand entry, the garlands, and the quiet moments the two of them found in the middle of it all.',
+    img: '/images/dilsha-adil/couple-01.jpg',
+    heroImg: '/images/dilsha-adil/couple-07.jpg',
+    gallery: [
+      { url: '/images/dilsha-adil/couple-01.jpg', size: 'large' },
+      { url: '/images/dilsha-adil/couple-02.jpg', size: 'small' },
+      { url: '/images/dilsha-adil/couple-03.jpg', size: 'small' },
+      { url: '/images/dilsha-adil/couple-04.jpg', size: 'wide' },
+      { url: '/images/dilsha-adil/couple-05.jpg', size: 'large' },
+      { url: '/images/dilsha-adil/couple-06.jpg', size: 'small' },
+      { url: '/images/dilsha-adil/couple-07.jpg', size: 'large' },
+      { url: '/images/dilsha-adil/couple-08.jpg', size: 'small' },
+      { url: '/images/dilsha-adil/couple-09.jpg', size: 'small' },
+      { url: '/images/dilsha-adil/couple-10.jpg', size: 'wide' },
+      { url: '/images/dilsha-adil/couple-11.jpg', size: 'large' },
+      { url: '/images/dilsha-adil/couple-12.jpg', size: 'small' },
+      { url: '/images/dilsha-adil/couple-13.jpg', size: 'large' },
+      { url: '/images/dilsha-adil/couple-14.jpg', size: 'small' },
+      { url: '/images/dilsha-adil/couple-15.jpg', size: 'small' },
+      { url: '/images/dilsha-adil/couple-16.jpg', size: 'wide' },
+      { url: '/images/dilsha-adil/couple-17.jpg', size: 'large' },
+      { url: '/images/dilsha-adil/couple-18.jpg', size: 'small' },
+      { url: '/images/dilsha-adil/couple-19.jpg', size: 'large' },
+      { url: '/images/dilsha-adil/couple-20.jpg', size: 'small' },
+    ]
   }
 ];
 
@@ -240,7 +399,7 @@ export const stillsData = [
   {
     id: 'still-03',
     title: 'Desert Wind Chronicles',
-    url: '/images/HAMZA_A1-7.jpg',
+    url: '/images/HAMZA_A1-3.jpg',
     aspect: '2.35/1',
     tag: 'CINEMA'
   },
@@ -261,17 +420,8 @@ export const stillsData = [
 ];
 
 export const knowledgeBase = [
-  { q: "Do you travel internationally for weddings?", a: "Yes, we are a global team with passports ready. While we are based in Kerala and Dubai, we frequently travel across Europe, Asia, and the Americas to archive love stories." },
-  { q: "The Creative Signature", a: "Our style is a blend of high-end editorial and cinematic storytelling. We focus on natural light, unscripted emotions, and a timeless 70mm aesthetic." },
-  { q: "When will we receive our wedding archive?", a: "A cinematic teaser is delivered within 7 days. The full high-resolution archive, stories, and physical Heirloom Boxes are delivered within 8-12 weeks." },
-  { q: "What is your approach to wedding photography?", a: "We believe in 'Poetic Realism'. We don't force awkward poses. Instead, we direct gently and capture raw, unscripted moments with an editorial, high-fashion aesthetic." },
-  { q: "The Invitation Process", a: "We take on a limited number of commissions each year to ensure absolute quality. A private consultation is the first step—proceed to our dedicated concierge portal to begin the journey." },
-  { q: "Do you offer custom Magazine Albums?", a: "Absolutely. Our 'Signature Magazine Albums' are premium, soft-touch physical legacies curated in our Dubai studio to act as the final, tangible piece of your wedding archive." }
-];
-
-export const testimonials = [
-  { quote: "They Are A Bunch Of Diligent Photographers, Who Go Out Of Their Way To Capture Beautiful Pictures And Videos On Your Special Day. I Had Them Booked For My Engagement Day And All The Photographers Who Came To Cover My Function Were Professional And Friendly.", name: "AISWARIA CHANDRAN" },
-  { quote: "They were the single best decision we made for our wedding. An incredibly humble, extremely passionate, and hardworking team of artists who captured our true essence.", name: "SUFFAN M." },
-  { quote: "I am so glad we chose them to archive our wedding. They are a team of brilliant visionaries who intuitively understand exactly what their clients are silently wishing for.", name: "SEIRA A." },
-  { quote: "From the pre-wedding shoot to the final event, they felt like family. The cinematic quality of their films is unmatched. Absolutely breathtaking work.", name: "KAVYA S." }
+  { q: "Do you travel outside Kerala and Dubai for weddings?", a: "Yes. We're based in Kerala and Dubai, but we travel across India, the UAE, and internationally for destination weddings." },
+  { q: "What's your shooting style?", a: "A mix of candid, documentary-style coverage and a few directed portraits. We focus on natural light and real moments, not stiff, posed shots." },
+  { q: "When will we get our photos and videos?", a: "A short highlight video is ready within 7 days. Your full photo gallery, films, and printed albums are delivered within 8-12 weeks." },
+  { q: "Do you offer printed wedding albums?", a: "Yes. Our bespoke magazine albums are designed in-house and printed in our Dubai studio — a physical keepsake made to last generations." }
 ];

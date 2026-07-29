@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'phosphor-react';
 
@@ -22,6 +22,7 @@ const ReelModal = ({ isOpen, onClose, reelUrl }) => {
   const embedUrl = videoId
     ? `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&showinfo=0&color=white&modestbranding=1`
     : reelUrl;
+  const isDirectVideo = !videoId && /\.(mp4|webm|mov)(\?|$)/i.test(reelUrl || '');
 
   return (
     <AnimatePresence>
@@ -50,6 +51,7 @@ const ReelModal = ({ isOpen, onClose, reelUrl }) => {
             exit={{ opacity: 0 }}
             transition={{ delay: 0.3 }}
             onClick={onClose}
+            aria-label="Close showreel"
             style={{
               position: 'absolute',
               top: '2rem',
@@ -63,7 +65,7 @@ const ReelModal = ({ isOpen, onClose, reelUrl }) => {
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              cursor: 'none',
+              cursor: 'pointer',
               zIndex: 1,
               transition: 'border-color 0.3s ease',
             }}
@@ -109,17 +111,33 @@ const ReelModal = ({ isOpen, onClose, reelUrl }) => {
               boxShadow: '0 30px 100px rgba(0,0,0,0.8)',
             }}
           >
-            <iframe
-              src={embedUrl}
-              title="IMC Weddings Showreel"
-              allow="autoPlay; fullscreen; picture-in-picture"
-              allowFullScreen
-              style={{
-                width: '100%',
-                height: '100%',
-                border: 'none',
-              }}
-            />
+            {isDirectVideo ? (
+              <video
+                src={embedUrl}
+                autoPlay
+                controls
+                playsInline
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover',
+                  border: 'none',
+                  background: '#000',
+                }}
+              />
+            ) : (
+              <iframe
+                src={embedUrl}
+                title="IMC Weddings Showreel"
+                allow="autoplay; fullscreen; picture-in-picture"
+                allowFullScreen
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  border: 'none',
+                }}
+              />
+            )}
           </motion.div>
         </motion.div>
       )}

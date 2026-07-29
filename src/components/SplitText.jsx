@@ -1,4 +1,3 @@
-import React from 'react';
 
 const SplitText = ({ children, className, style }) => {
   if (typeof children !== 'string') return children;
